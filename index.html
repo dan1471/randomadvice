@@ -1,0 +1,104 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Advice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    header a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff6600;
+    }
+
+    button {
+      background-color: #ff6600;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #cc5500;
+    }
+
+    #advice {
+      margin-top: 30px;
+      font-size: 24px;
+      padding: 20px;
+      background-color: #444;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+  </header>
+
+  <div class="container">
+    <h1>Random Advice</h1>
+    <button onclick="getRandomAdvice()">Get Advice</button>
+    <div id="advice"></div>
+  </div>
+
+  <div id="about" class="container">
+    <h2>About me</h2>
+     <p>Hello there! I'm Dancan Nyongesa, a developer who loves to build fun and useful projects.  this random advice website is one of my creations, designed to  give you advice whenever you need it! 😄</p>
+    <p>If you have any questions or want to see more of my work, feel free to reach out! 🚀</p>
+    <p>This website fetches random pieces of advice from the Advice Slip API. It's a simple project created to provide some words of wisdom whenever you need them. 😊</p>
+    <p>If you have any questions or suggestions, feel free to reach out! 🚀</p>
+  </div>
+<footer>
+    <p>&copy; 2024 Dictionary App by Dancan Nyongesa</p>
+    <h2>dan0703778685@gmail.com</h2>
+  </footer>
+  <script>
+    function getRandomAdvice() {
+      fetch('https://api.adviceslip.com/advice')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('advice').textContent = data.slip.advice;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+  </script>
+</body>
+</html>
